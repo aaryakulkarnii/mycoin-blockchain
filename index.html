@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyCoin Blockchain Explorer</title>
+</head>
+<body>
+    <h1>MyCoin Blockchain</h1>
+
+    <button onclick="mineBlock()">⛏️ Mine New Block</button>
+    <button onclick="fetchChain()">🔗 View Blockchain</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        const API_URL = 'http://localhost:3000';
+
+        function fetchChain() {
+            fetch(`${API_URL}/chain`)
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+                });
+        }
+
+        function mineBlock() {
+            const data = prompt("Enter some data to store in the block:");
+            fetch(`${API_URL}/mine`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ data })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById('output').innerText = JSON.stringify(data, null, 2);
+                });
+        }
+    </script>
+</body>
+</html>

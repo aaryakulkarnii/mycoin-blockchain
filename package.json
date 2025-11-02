@@ -1,0 +1,16 @@
+{
+  "name": "mycoin-blockchain",
+  "version": "1.0.0",
+  "description": "Simple Blockchain Project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^5.1.0"
+  },
+  "author": "",
+  "license": "ISC"
+}
